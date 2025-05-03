@@ -4,7 +4,7 @@ Sistema web en **PHP + MySQL (MariaDB)** para la publicación, compra y administ
 
 ---
 
-## 🧱 Arquitectura del Proyecto (MVC básico)
+## 🧱 Arquitectura del Proyecto.
 
 ```
 cupones_sv/
@@ -47,7 +47,6 @@ cupones_sv/
 │   ├── historial_compras.php
 │   ├── recuperar.php
 │   ├── recuperacion_exitosa.php
-│   └── error.php
 ```
 
 ---
@@ -66,32 +65,6 @@ cupones_sv/
 - 🔑 Recuperación de contraseña por tipo de usuario
 - 📎 Estilos CSS aplicados sin frameworks
 
----
-
-## 🚀 Instalación Rápida
-
-1. Clona el repositorio:
-```bash
-git clone https://github.com/tu_usuario/cuponera-sv.git
-```
-
-2. Importa la base de datos (`cuponera.sql`) en **HeidiSQL** o **phpMyAdmin**
-
-3. Configura `config/database.php` con tus credenciales locales:
-```php
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$dbname = 'cuponera';
-```
-
-4. Iniciá tu servidor local (`XAMPP`, `Laragon`, `MAMP`) y navegá a:
-
-```
-http://localhost/cupones_sv/
-```
-
----
 
 ## 👥 Tipos de Usuario
 
@@ -111,6 +84,3 @@ http://localhost/cupones_sv/
 
 ---
 
-## 🧑‍💻 Autor
-
-Desarrollado por [Tu Nombre] — `PHP puro`, `MySQL`, `HTML`, `CSS`
