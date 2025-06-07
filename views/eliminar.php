@@ -1,33 +1,52 @@
 <?php
 session_start();
+include('../config/database.php');
 include('../includes/header.php');
 
 if ($_SESSION['tipo'] != 'admin') {
-    echo "Acceso denegado.";
+    echo "<div class='alert alert-danger'>Acceso denegado.</div>";
     include('../includes/footer.php');
     exit;
 }
 
-// Obtener datos de la URL
-$tipo = $_GET['tipo'] ?? '';
-$id = $_GET['id'] ?? '';
+echo "<div class='container mt-4'>";
+echo "<h2>Eliminar Usuarios</h2>";
 
-if (!in_array($tipo, ['cliente', 'empresa']) || !is_numeric($id)) {
-    echo "<p>❌ Parámetros inválidos.</p>";
-    include('../includes/footer.php');
-    exit;
+if (isset($_GET['tipo']) && isset($_GET['id'])) {
+    $tipo = $_GET['tipo'];
+    $id = intval($_GET['id']);
+
+    $tabla = ($tipo === 'cliente') ? 'clientes' : (($tipo === 'empresa') ? 'empresas' : null);
+
+    if ($tabla) {
+        $del = mysqli_query($conn, "DELETE FROM $tabla WHERE id = $id");
+        echo $del ? "<div class='alert alert-success'>Usuario eliminado.</div>" : "<div class='alert alert-danger'>Error al eliminar.</div>";
+    } else {
+        echo "<div class='alert alert-warning'>❌ Parámetros inválidos.</div>";
+    }
 }
 
-echo "<h2>Confirmar eliminación</h2>";
-echo "<p>¿Estás seguro de que deseas eliminar este <strong>$tipo</strong> con ID <strong>$id</strong>?</p>";
+// Mostrar usuarios
+$res_c = mysqli_query($conn, "SELECT id, usuario, correo FROM clientes");
+$res_e = mysqli_query($conn, "SELECT id, nombre AS usuario, correo FROM empresas");
 
-echo "<form action='../controllers/eliminar.php' method='POST'>
-        <input type='hidden' name='tipo' value='$tipo'>
-        <input type='hidden' name='id' value='$id'>
-        <button type='submit' name='confirmar'>✅ Sí, eliminar</button>
-        <a href='dashboard_admin.php'>❌ Cancelar</a>
-      </form>";
+echo "<h4 class='mt-4'>Clientes</h4><ul class='list-group'>";
+while ($c = mysqli_fetch_assoc($res_c)) {
+    echo "<li class='list-group-item d-flex justify-content-between align-items-center'>
+            {$c['usuario']} ({$c['correo']})
+            <a href='eliminar.php?tipo=cliente&id={$c['id']}' class='btn btn-sm btn-danger'>Eliminar</a>
+          </li>";
+}
+echo "</ul>";
+
+echo "<h4 class='mt-4'>Empresas</h4><ul class='list-group'>";
+while ($e = mysqli_fetch_assoc($res_e)) {
+    echo "<li class='list-group-item d-flex justify-content-between align-items-center'>
+            {$e['usuario']} ({$e['correo']})
+            <a href='eliminar.php?tipo=empresa&id={$e['id']}' class='btn btn-sm btn-danger'>Eliminar</a>
+          </li>";
+}
+echo "</ul></div>";
 
 include('../includes/footer.php');
 ?>
-

@@ -35,7 +35,9 @@ $ganancias = mysqli_query($conn, "
 
 echo "<h3>Total de ganancias por empresa (por comisión)</h3>";
 while ($row = mysqli_fetch_assoc($ganancias)) {
-    echo "<p>{$row['empresa']}: <b>\${$row['ganancia']}</b></p>";
+    $ganancia = number_format($row['ganancia'], 2);
+echo "<p>{$row['empresa']}: <b>\${$ganancia}</b></p>";
+
 }
 
 include('../includes/footer.php');

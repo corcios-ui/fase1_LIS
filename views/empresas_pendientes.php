@@ -10,7 +10,10 @@ while ($row = mysqli_fetch_assoc($res)) {
     echo "<strong>{$row['nombre']}</strong> - {$row['correo']}<br>";
     echo "<form action='../controllers/admin.php' method='POST'>
             <input type='hidden' name='id' value='{$row['id']}'>
-            <input type='number' name='comision' placeholder='Comisión (%)' required>
+            <input type='number' name='comision' placeholder='Comisión (%)' required 
+            min='0' max='100' step='0.01' 
+            title='Ingresa un valor entre 0 y 100'>
+
             <button type='submit' name='aprobar'>Aprobar</button>
             <button type='submit' name='rechazar'>Rechazar</button>
           </form>";
