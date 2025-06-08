@@ -4,6 +4,23 @@ Sistema web en **PHP + MySQL (MariaDB)** para la publicación, compra y administ
 
 ---
 
+## 🧪 Pasos para ejecutar:
+1- Coloca o clona el proyecto en la carpeta htdocs:
+
+  - Copia la carpeta fase1_LIS a:
+
+  - C:\xampp\htdocs\ (Windows) o
+
+  - /Applications/MAMP/htdocs/ (Mac)
+
+2- Inicia Apache y MySQL desde el panel de XAMPP/MAMP.
+
+3- Crea la base de datos:
+
+  - Copia el contenido de baselis_fase1.sql y ejecuta la consulta como query o importa el archivo desde el proyecto.
+
+4- Abre el navegador y ejecuta el proyecto accediendo a: http://localhost/FASE1_LIS/index.php
+
 ## 🧱 Arquitectura del Proyecto.
 
 ```

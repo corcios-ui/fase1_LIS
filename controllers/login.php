@@ -7,16 +7,24 @@ if (isset($_POST['login'])) {
     $usuario = trim($_POST['usuario']);
     $pass = $_POST['contrasena'];
 
-    // Si es admin con credenciales quemadas
-    if ($tipo === 'admin' && $usuario === 'jose' && $pass === 'jose') {
-        $_SESSION['usuario'] = 'jose';
-        $_SESSION['tipo'] = 'admin';
-        header("Location: ../views/perfil_admin.php");
-        exit;
+    // Validación básica
+    if (empty($usuario) || empty($pass)) {
+        die("<p style='color:red;'>❌ Usuario y contraseña son obligatorios.</p>");
     }
 
-    // Cliente o empresa con verificación desde base de datos
-    $tabla = $tipo === 'cliente' ? 'clientes' : 'empresas';
+    if (!preg_match("/^[A-Za-z0-9_]{4,20}$/", $usuario)) {
+        die("<p style='color:red;'>❌ Usuario inválido. Usa solo letras, números y guión bajo.</p>");
+    }
+
+    // Tabla según tipo
+    switch ($tipo) {
+        case 'admin': $tabla = 'administradores'; break;
+        case 'cliente': $tabla = 'clientes'; break;
+        case 'empresa': $tabla = 'empresas'; break;
+        default:
+            die("<p style='color:red;'>❌ Tipo de usuario no válido.</p>");
+    }
+
     $usuario_seguro = mysqli_real_escape_string($conn, $usuario);
     $sql = "SELECT * FROM $tabla WHERE usuario = '$usuario_seguro'";
     $res = mysqli_query($conn, $sql);
