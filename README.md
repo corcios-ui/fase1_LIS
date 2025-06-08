@@ -22,50 +22,49 @@ Sistema web en **PHP + MySQL (MariaDB)** para la publicación, compra y administ
 4- Abre el navegador y ejecuta el proyecto accediendo a: http://localhost/FASE1_LIS/index.php
 
 ## 🧱 Arquitectura del Proyecto.
-
+---
 ```
 cupones_sv/
-├── index.php                 # Inicio con ofertas destacadas
+├── 📄 index.php                    # 🎯 Inicio con ofertas destacadas
 │
-├── config/                  # Configuración del sistema
-│   ├── database.php         # Conexión a la base de datos
-│   └── rutas.php            # Constantes globales para rutas
+├── 📁 config/                     # ⚙️ Configuración del sistema
+│   ├── 📄 database.php            # 🔗 Conexión a la base de datos
+│   └── 📄 rutas.php               # 📋 Constantes globales para rutas
 │
-├── includes/                # Elementos reutilizables
-│   ├── header.php           # Cabecera con sesión y navegación
-│   └── footer.php           # Pie de página y cierre HTML
+├── 📁 includes/                   # 🔧 Elementos reutilizables
+│   ├── 📄 header.php              # 📌 Cabecera con sesión y navegación
+│   └── 📄 footer.php              # 🦶 Pie de página y cierre HTML
 │
-├── assets/
-│   └── css/
-│       └── styles.css       # Estilos generales
+├── 📁 assets/
+│   └── 📁 css/
+│       └── 📄 styles.css          # 🎨 Estilos generales
 │
-├── controllers/             # Lógica del sistema (Controladores)
-│   ├── login.php            # Verificación de sesión
-│   ├── logout.php           # Cierre de sesión
-│   ├── registro_cliente.php
-│   ├── registro_empresa.php
-│   ├── oferta.php           # Publicación de ofertas
-│   ├── recuperar.php        # Recuperación de contraseña
-│   └── eliminar.php         # Eliminación de usuarios
+├── 📁 controllers/                # 🎮 Lógica del sistema (Controladores)
+│   ├── 📄 login.php               # 🔐 Verificación de sesión
+│   ├── 📄 logout.php              # 🚪 Cierre de sesión
+│   ├── 📄 registro_cliente.php
+│   ├── 📄 registro_empresa.php
+│   ├── 📄 oferta.php              # 🎫 Publicación de ofertas
+│   ├── 📄 recuperar.php           # 🔄 Recuperación de contraseña
+│   └── 📄 eliminar.php            # ❌ Eliminación de usuarios
 │
-├── views/                   # Interfaces del usuario (Vistas)
-│   ├── login.php
-│   ├── registro_cliente.php
-│   ├── registro_empresa.php
-│   ├── publicar_oferta.php
-│   ├── ver_ofertas.php
-│   ├── buscar_ofertas.php
-│   ├── mis_ofertas.php
-│   ├── perfil_cliente.php
-│   ├── perfil_empresa.php
-│   ├── perfil_admin.php
-│   ├── dashboard_admin.php
-│   ├── empresas_pendientes.php
-│   ├── historial_compras.php
-│   ├── recuperar.php
-│   ├── recuperacion_exitosa.php
+└── 📁 views/                      # 👁️ Interfaces del usuario (Vistas)
+    ├── 📄 login.php
+    ├── 📄 registro_cliente.php
+    ├── 📄 registro_empresa.php
+    ├── 📄 publicar_oferta.php
+    ├── 📄 ver_ofertas.php
+    ├── 📄 buscar_ofertas.php
+    ├── 📄 mis_ofertas.php
+    ├── 📄 perfil_cliente.php
+    ├── 📄 perfil_empresa.php
+    ├── 📄 perfil_admin.php
+    ├── 📄 dashboard_admin.php
+    ├── 📄 empresas_pendientes.php
+    ├── 📄 historial_compras.php
+    ├── 📄 recuperar.php
+    └── 📄 recuperacion_exitosa.php
 ```
-
 ---
 
 ## ⚙️ Funcionalidades Principales
